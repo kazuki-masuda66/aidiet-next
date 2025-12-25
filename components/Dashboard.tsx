@@ -151,7 +151,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, meals, currentDate, onPrevD
                                 startAngle={90}
                                 endAngle={-270}
                                 animationBegin={200}
-                                animationDuration={1500}
+                                animationDuration={800}
                                 animationEasing="ease-out"
                             >
                                 {chartData.map((entry, index) => (
@@ -163,13 +163,13 @@ const Dashboard: React.FC<DashboardProps> = ({ user, meals, currentDate, onPrevD
 
                     <div className="absolute flex flex-col items-center text-center">
                         <span className={`text-[10px] mb-1 font-bold uppercase tracking-widest transition-colors duration-300 ${isOver ? 'text-red-500' : 'text-slate-400'}`}>
-                            {isOver ? 'Over Limit' : 'Remaining'}
+                            {isOver ? 'カロリー超過' : '残カロリー'}
                         </span>
                         <span className={`text-6xl font-extrabold tracking-tighter tabular-nums leading-none transition-colors duration-300 ${isOver ? 'text-red-500' : 'text-slate-800'}`}>
                             <CountUp value={Math.abs(remaining)} />
                         </span>
                         <div className="mt-3 flex items-center gap-2 bg-slate-100/50 px-3 py-1 rounded-full border border-slate-100 backdrop-blur-sm">
-                            <span className="text-[10px] text-slate-400 font-bold uppercase">Total</span>
+                            <span className="text-[10px] text-slate-400 font-bold uppercase">摂取</span>
                             <span className="text-xs text-slate-600 font-bold tabular-nums">
                                 <CountUp value={Math.round(totalCalories)} suffix={` / ${user.tdee}`} />
                             </span>
@@ -190,7 +190,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, meals, currentDate, onPrevD
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         whileHover={{ y: -4, scale: 1.02 }}
-                        transition={{ delay: item.delay, type: "spring", stiffness: 300, damping: 20 }}
+                        transition={{ delay: item.delay, duration: 0.4, ease: "easeOut" }}
                         className="relative bg-white/70 backdrop-blur-xl p-4 rounded-[1.5rem] flex flex-col justify-between items-center h-36 overflow-hidden group border border-white/60 shadow-sm hover:shadow-xl transition-all duration-300"
                     >
                         {/* Abstract Light Orb (Replaces the big icon) */}
@@ -225,7 +225,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, meals, currentDate, onPrevD
             >
                 <div className="flex items-center justify-between px-2">
                     <h3 className="text-lg font-bold text-slate-800 tracking-tight">食事履歴</h3>
-                    <span className="text-[10px] font-bold text-slate-400 bg-white/50 px-2.5 py-1 rounded-full border border-white/60">{meals.length} meals</span>
+                    <span className="text-[10px] font-bold text-slate-400 bg-white/50 px-2.5 py-1 rounded-full border border-white/60">{meals.length} 回</span>
                 </div>
 
                 <div className="space-y-3">
@@ -251,7 +251,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, meals, currentDate, onPrevD
                                     initial={{ opacity: 0, x: -20, scale: 0.95 }}
                                     animate={{ opacity: 1, x: 0, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-                                    transition={{ delay: 0.05 * index }}
+                                    transition={{ delay: 0.03 * index, duration: 0.3, ease: "easeOut" }}
                                     className="bg-white/80 backdrop-blur-md p-4 rounded-2xl flex items-center justify-between shadow-sm border border-white/60 group relative overflow-hidden hover:bg-white transition-colors"
                                 >
                                     <div className="flex-1 mr-4 relative z-10">

@@ -212,7 +212,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ user, onAddMeal, messages
                                 key={msg.id}
                                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
                                 className={`flex items-end gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                             >
                                 {msg.role === 'model' && (
