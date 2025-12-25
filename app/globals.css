@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 @layer base {
-  html, body {
+
+  html,
+  body {
     height: 100%;
     width: 100%;
-    overflow: hidden; /* Prevent scrolling on body, handled by app containers */
-    overscroll-behavior: none; /* Prevent pull-to-refresh on mobile */
+    overflow: hidden;
+    /* Prevent scrolling on body, handled by app containers */
+    overscroll-behavior: none;
+    /* Prevent pull-to-refresh on mobile */
   }
 
   body {
@@ -55,5 +59,44 @@
     border-color: #8b5cf6;
     background: #ffffff;
     box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+  }
+
+  /* ===== Mobile Performance Optimizations ===== */
+
+  /* GPU Acceleration for animated elements */
+  .gpu-accelerate {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+
+  /* Reduce blur intensity on mobile for better performance */
+  @media (max-width: 768px),
+  (hover: none) {
+    .glass-panel {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* Disable heavy backdrop blur on smaller elements */
+    .backdrop-blur-md,
+    .backdrop-blur-xl,
+    .backdrop-blur-2xl,
+    .backdrop-blur-3xl {
+      backdrop-filter: blur(4px) !important;
+      -webkit-backdrop-filter: blur(4px) !important;
+    }
+
+    /* Stop ambient background animations on mobile */
+    .ambient-orb {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    /* Reduce shadow complexity on mobile */
+    .shadow-2xl,
+    .shadow-xl {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    }
   }
 }

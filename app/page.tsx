@@ -497,7 +497,7 @@ const Home: React.FC = () => {
                             duration: 15,
                             ease: "easeInOut"
                         }}
-                        className="absolute top-[-10%] left-[-10%] w-[80%] h-[60%] bg-violet-200/50 rounded-full blur-[100px]"
+                        className="ambient-orb absolute top-[-10%] left-[-10%] w-[80%] h-[60%] bg-violet-200/50 rounded-full blur-[100px]"
                     />
                     <motion.div
                         animate={{
@@ -511,7 +511,7 @@ const Home: React.FC = () => {
                             ease: "easeInOut",
                             delay: 2
                         }}
-                        className="absolute bottom-[-10%] right-[-20%] w-[80%] h-[70%] bg-pink-200/40 rounded-full blur-[100px]"
+                        className="ambient-orb absolute bottom-[-10%] right-[-20%] w-[80%] h-[70%] bg-pink-200/40 rounded-full blur-[100px]"
                     />
                     <motion.div
                         animate={{
@@ -523,7 +523,7 @@ const Home: React.FC = () => {
                             duration: 8,
                             ease: "easeInOut"
                         }}
-                        className="absolute top-[30%] right-[10%] w-[40%] h-[40%] bg-blue-200/30 rounded-full blur-[80px]"
+                        className="ambient-orb absolute top-[30%] right-[10%] w-[40%] h-[40%] bg-blue-200/30 rounded-full blur-[80px]"
                     />
                 </div>
 
